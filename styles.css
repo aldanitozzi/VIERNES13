@@ -1,0 +1,228 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: white;
+    text-align: center;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+/* Estilo inicial del mensaje junto a los botones */
+.music-message {
+    color: white;
+    font-size: 1.0 rem; /* Tamaño de fuente más pequeño al inicio */
+    font-family: 'Arial', sans-serif;
+    margin-left: 10px; /* Espacio entre los botones y el mensaje */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Agrega un brillo al texto */
+}
+
+/* Opcional: Estilo ajustado para cuando el mensaje es más prominente (si es necesario) */
+.controls.showing .music-message {
+    font-size: 1rem; /* Tamaño de fuente ajustado si es necesario */
+}
+/* Fondo de corazones animados */
+@keyframes moveHearts {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(-100vh); }
+}
+
+.heart {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: red;
+    transform: rotate(-45deg);
+    animation: moveHearts 8s infinite linear;
+}
+
+.heart:before, .heart:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.heart:before {
+    top: -10px;
+    left: 0;
+}
+
+.heart:after {
+    left: 10px;
+    top: 0;
+}
+
+/* Contenedor de mensaje */
+.container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Encabezado y texto de introducción centrados */
+h1, .intro {
+    margin: 0;
+}
+
+/* Encabezado */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Texto de introducción */
+.intro {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Estilo de botones */
+button {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white;
+    padding: 8px 16px; /* Ajusta el padding para mejorar la apariencia del botón */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+    display: inline-block;
+}
+
+/* Estilo del botón al pasar el ratón */
+button:hover {
+    background-color: #45a049; /* Color verde más oscuro al pasar el ratón */
+}
+
+/* Botón de mostrar mensaje */
+#showMessage {
+    position: absolute;
+    left: 50%;
+    top: 105%; /* Mueve el botón más allá del borde inferior de la página */
+    transform: translate(-50%, -50%); /* Ajusta el botón al centro de su posición */
+}
+
+/* Posicionar el botón de mostrar mensaje debajo del mensaje cuando se muestra */
+#showMessage.showing {
+    font-size: 0.9rem; /* Tamaño del texto en el botón */
+    top: 90%; /* Ajustar para mover el botón debajo del mensaje */
+    left: 50%; /* Centra el botón horizontalmente en su contenedor */
+    transform: translate(-50%, -50%); /* Ajusta el botón al centro de su posición */
+}
+
+/* Asegurar que el mensaje tenga un estilo consistente */
+.message-box p {
+    margin: 0;
+    padding: 10px;
+    font-size: 1.4rem;
+}
+
+/* Mostrar el mensaje con fondo transparente */
+.message-box {
+    margin: 20px auto;
+    font-size: 1.4rem;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+/* Controles de música en la esquina superior derecha */
+.controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center
+}
+
+/* Botón de controles */
+.controls button {
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.controls button img {
+    width: 40px;
+    height: 40px;
+}
+
+.controls button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ajustes generales para pantallas pequeñas */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .intro {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    .message-box p {
+        font-size: 1.2rem;
+    }
+
+    .controls {
+        top: 10px;
+        right: 10px;
+        gap: 15px;
+    }
+
+    .controls button img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Ajustes para pantallas medianas */
+@media (min-width: 601px) and (max-width: 1024px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .intro {
+        font-size: 1.1rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 7px 14px;
+    }
+
+    .message-box p {
+        font-size: 1.3rem;
+    }
+
+    .controls {
+        top: 15px;
+        right: 15px;
+        gap: 18px;
+    }
+
+    .controls button img {
+        width: 38px;
+        height: 38px;
+    }
+}
